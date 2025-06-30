@@ -147,3 +147,16 @@ Conectar com a maquina
 
 Conectar com o banco
 ##psql -h terraform-rds-postgres.cwx8awcq8n7y.us-east-1.rds.amazonaws.com -U LuizNazareth -d terraformDatabase -p 5432
+
+##JENKINS CODING
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
