@@ -140,3 +140,10 @@ push para Docker Hub / ECR
 deploy via SSH ou ECS CLI
 
  Automatizar docker build e docker push
+
+Conectar com a maquina
+##ssh -i ~/.ssh/terraform-key.pem ubuntu@54.158.37.220 -v
+
+
+Conectar com o banco
+##psql -h terraform-rds-postgres.cwx8awcq8n7y.us-east-1.rds.amazonaws.com -U LuizNazareth -d terraformDatabase -p 5432
