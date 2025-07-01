@@ -160,3 +160,13 @@ sudo apt update
 sudo apt install jenkins -y
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+
+
+##Objetivos do Jenkinsfile
+
+Clonar o repositório do GitHub
+Provisionar ou atualizar infraestrutura com Terraform
+Construir e subir os containers Docker com docker-compose
+Rodar testes (unitários, se houver)
+(Opcional) Fazer deploy em produção (já incluso nos docker-compose)
+Futuramente: subir as imagens para o Docker Hub ou AWS ECR
