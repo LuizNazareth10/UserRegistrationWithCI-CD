@@ -172,3 +172,17 @@ resource "aws_db_instance" "postgres" {
     Name = "Postgres-DB"
   }
 }
+
+##JENKINS INSTANCE
+
+resource "aws_instance" "jenkins" {
+  ami                    = "ami-020cba7c55df1f615"
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.public_subnet1.id
+  vpc_security_group_ids = [aws_security_group.allow_web_ssh.id]
+  key_name               = var.key_name
+
+  tags = {
+    Name = "Microservice-Host-Jenkins"
+  }
+}

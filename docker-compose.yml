@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  user-service:
+    build:
+      context: ./app/user-service
+    container_name: user_service
+    ports:
+      - "5000:5000"
+    environment:
+      POSTGRES_DB: terraformDatabase
+      POSTGRES_USER: LuizNazareth
+      POSTGRES_PASSWORD: Lg160103*
+      POSTGRES_HOST: terraform-rds-postgres.cwx8awcq8n7y.us-east-1.rds.amazonaws.com
+    restart: unless-stopped
+    networks:
+      - microservices_net
+
+  auth-service:
+    build:
+      context: ./app/auth-service
+    container_name: auth_service
+    ports:
+      - "5001:5001"
+    environment:
+      JWT_SECRET: 6e01f4d3907f11904c674d13c7ca74ba6e7ece4311aee54de5983c5c67c22521
+    restart: unless-stopped
+    networks:
+      - microservices_net
+
+networks:
+  microservices_net:
+    driver: bridge
