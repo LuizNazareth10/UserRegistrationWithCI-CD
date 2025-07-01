@@ -7,9 +7,10 @@ pipeline {
         DOCKER_COMPOSE = 'docker-compose.yml'
     }
 
-    tools {
-        terraform 'terraform'
-    }
+    // Remova esse bloco se não tiver terraform configurado no Jenkins
+    // tools {
+    //     terraform 'terraform'
+    // }
 
     stages {
         stage('Clonar Repositório') {
@@ -19,8 +20,8 @@ pipeline {
         }
 
         stage('Provisionar Infraestrutura com Terraform') {
-            dir("${env.TF_DIR}") {
-                steps {
+            steps {
+                dir("${env.TF_DIR}") {
                     sh 'terraform init'
                     sh 'terraform apply -auto-approve'
                 }
@@ -28,8 +29,8 @@ pipeline {
         }
 
         stage('Construir e subir Microserviços') {
-            dir("${env.WORKSPACE}") {
-                steps {
+            steps {
+                dir("${env.WORKSPACE}") {
                     sh 'docker-compose down || true'
                     sh 'docker-compose build'
                     sh 'docker-compose up -d'
