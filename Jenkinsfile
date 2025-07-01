@@ -23,7 +23,8 @@ pipeline {
             steps {
                 dir("${env.TF_DIR}") {
                     sh 'terraform init'
-                    sh 'terraform apply -auto-approve'
+                    sh 'terraform apply -auto-approve -var="key_name=jenkins-key"'
+
                 }
             }
         }
